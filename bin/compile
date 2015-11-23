@@ -1,0 +1,22 @@
+#!/bin/bash
+echo "*** Installing Heroku Toolbelt ***"
+
+set -e
+
+BUILD_DIR=$1
+CACHE_DIR=$2
+
+mkdir -p $CACHE_DIR
+mkdir -p $BUILD_DIR
+
+curl -s -L -o $CACHE_DIR/heroku-client.tgz https://s3.amazonaws.com/assets.heroku.com/heroku-client/heroku-client.tgz
+cd $CACHE_DIR
+tar xf heroku-client.tgz
+
+mv $CACHE_DIR/heroku-client $BUILD_DIR
+
+export PATH="$BUILD_DIR/heroku-client/bin":$PATH
+
+heroku --version
+
+echo "*** Heroku Toolbelt installed ***"

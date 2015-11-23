@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo "Buildpack for Heroku Toolbelt"
+exit 0;
