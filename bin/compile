@@ -16,7 +16,11 @@ tar xf heroku-client.tgz
 mv $CACHE_DIR/heroku-client $BUILD_DIR
 
 export PATH="$BUILD_DIR/heroku-client/bin":$PATH
+PROFILE_PATH="$BUILD_DIR/.profile.d/heroku-toolbelt.sh"
+mkdir -p $(dirname $PROFILE_PATH)
+echo 'export PATH="$HOME/heroku-client/bin:$PATH"' > $PROFILE_PATH
 
+heroku plugins:install heroku-redis
 heroku --version
 
 echo "*** Heroku Toolbelt installed ***"
