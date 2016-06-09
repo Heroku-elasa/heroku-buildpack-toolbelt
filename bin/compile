@@ -1,10 +1,10 @@
 #!/bin/bash
 echo "*** Installing Heroku Toolbelt ***"
 
-set -e
+#set -e
 
-BUILD_DIR=$1
-CACHE_DIR=$2
+#BUILD_DIR=$1
+#CACHE_DIR=$2
 
 BUILD_DIR=$OPENSHIFT_HOMEDIR/app-root/runtime/srv/heroku
 CACHE_DIR=$OPENSHIFT_HOMEDIR/app-root/runtime/tmp/
