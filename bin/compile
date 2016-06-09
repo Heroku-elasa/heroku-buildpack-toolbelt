@@ -6,6 +6,14 @@ set -e
 BUILD_DIR=$1
 CACHE_DIR=$2
 
+BUILD_DIR=$OPENSHIFT_HOMEDIR/app-root/runtime/srv/heroku
+CACHE_DIR=$OPENSHIFT_HOMEDIR/app-root/runtime/tmp/
+
+mkdir $OPENSHIFT_HOMEDIR/app-root/runtime/srv
+
+mkdir $OPENSHIFT_HOMEDIR/app-root/runtime/tmp/
+mkdir  $OPENSHIFT_HOMEDIR/app-root/runtime/srv/heroku
+
 mkdir -p $CACHE_DIR
 mkdir -p $BUILD_DIR
 
