@@ -106,6 +106,7 @@ curl -s -L -o $CACHE_DIR/heroku-client.tgz https://s3.amazonaws.com/assets.herok
 cd $CACHE_DIR
 tar xf heroku-client.tgz
 
+rm -rf $BUILD_DIR/*
 mv $CACHE_DIR/heroku-client $BUILD_DIR
 
 export PATH="$BUILD_DIR/heroku-client/bin":$PATH
