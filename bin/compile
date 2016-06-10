@@ -2,7 +2,8 @@
 echo "*** Installing Heroku Toolbelt ***"
 
 #set -e
-
+echo 'Going to HOME directory:'
+cd 
 if [[ "$HOME" = "" ]];then
 	Current_DIR="$PWD"
 	echo 'Current_DIR is:'
