@@ -142,7 +142,26 @@ cd $BUILD_DIR
 export PATH="$BUILD_DIR/bin":$PATH
 PROFILE_PATH="$BUILD_DIR/.profile.d/heroku-toolbelt.sh"
 mkdir -p $(dirname $PROFILE_PATH)
-echo 'export PATH="$OPENSHIFT_HOMEDIR/app-root/runtime/srv/heroku/bin:$PATH"' > $PROFILE_PATH
+cd
+if [ "$Current_DIR" = "" ]; then	
+	export Current_DIR="$PWD"
+	echo 'Current_DIR is:'
+	echo $Current_DIR
+fi
+
+if [ "$OPENSHIFT_HOMEDIR" = "" ]; then	
+	export OPENSHIFT_HOMEDIR="$Current_DIR/openshifts"
+	echo 'OPENSHIFT_HOMEDIR is:'
+	echo $OPENSHIFT_HOMEDIR
+else
+	echo 'OPENSHIFT_HOMEDIR exist:'
+	echo $OPENSHIFT_HOMEDIR
+fi
+
+export PATH=$OPENSHIFT_HOMEDIR/app-root/runtime/srv/heroku/bin:$PATH
+echo $PATH
+
+echo 'export PATH="${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/heroku/bin:$PATH"' > $PROFILE_PATH
 
 heroku plugins:install heroku-redis
 heroku --version
