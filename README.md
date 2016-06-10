@@ -16,7 +16,7 @@ For running Heroko from e Heroku server:
 3. install a fake heroku app and git push the files to it successfully
 4. Run `heroku bash run` and SSH into your app
 5. Run `cd `
-6.  `git clone https://github.com/Heroku-elasa/heroku-buildpack-toolbelt.git && cd heroku-buildpack-toolbelt\bin && chmod 755  -R . `
+6.  `git clone https://github.com/Heroku-elasa/heroku-buildpack-toolbelt.git && cd heroku-buildpack-toolbelt\bin  `
 7. `./compile` 
 8. Wait (This may take at least an hour)
     If you want to see "what's going on, you may tail the log file and watch some shell movie ;)
