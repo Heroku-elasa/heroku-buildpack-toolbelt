@@ -9,8 +9,9 @@ if [[ "$HOME" = "" ]];then
 	echo $Current_DIR
 else
 	echo 'Current_DIR is home:'
-	echo $Current_DIR
+
     Current_DIR="$HOME"
+    	echo $Current_DIR
 fi
 
 if [[ "$OPENSHIFT_LOG_DIR" = "" ]];then
