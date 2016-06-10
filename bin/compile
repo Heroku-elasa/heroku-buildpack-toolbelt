@@ -81,9 +81,10 @@ fi
 
 if [ ! -d ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv ]; then	
     mkdir ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv
-	echo 'mkdir is:'
-	echo ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv
+    echo 'mkdir is:'
+    echo ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv
 fi
+
 rm -rf $OPENSHIFT_TMP_DIR/*
 
 
@@ -94,13 +95,13 @@ rm -rf *
 BUILD_DIR=$OPENSHIFT_HOMEDIR/app-root/runtime/srv/heroku
 CACHE_DIR=$OPENSHIFT_HOMEDIR/app-root/runtime/tmp/
 
-mkdir $OPENSHIFT_HOMEDIR/app-root/runtime/srv
+#mkdir $OPENSHIFT_HOMEDIR/app-root/runtime/srv
 
-mkdir $OPENSHIFT_HOMEDIR/app-root/runtime/tmp/
+#mkdir $OPENSHIFT_HOMEDIR/app-root/runtime/tmp/
 mkdir  $OPENSHIFT_HOMEDIR/app-root/runtime/srv/heroku
 
-mkdir -p $CACHE_DIR
-mkdir -p $BUILD_DIR
+#mkdir -p $CACHE_DIR
+#mkdir -p $BUILD_DIR
 
 curl -s -L -o $CACHE_DIR/heroku-client.tgz https://s3.amazonaws.com/assets.heroku.com/heroku-client/heroku-client.tgz
 cd $CACHE_DIR
