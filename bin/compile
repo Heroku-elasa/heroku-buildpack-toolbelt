@@ -99,6 +99,7 @@ CACHE_DIR=$OPENSHIFT_HOMEDIR/app-root/runtime/tmp/
 
 #mkdir $OPENSHIFT_HOMEDIR/app-root/runtime/tmp/
 mkdir  $OPENSHIFT_HOMEDIR/app-root/runtime/srv/heroku
+rm -rf $OPENSHIFT_HOMEDIR/app-root/runtime/srv/heroku/*
 
 #mkdir -p $CACHE_DIR
 #mkdir -p $BUILD_DIR
