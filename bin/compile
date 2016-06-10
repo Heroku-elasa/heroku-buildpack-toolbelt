@@ -159,6 +159,7 @@ else
 fi
 
 export PATH=$OPENSHIFT_HOMEDIR/app-root/runtime/srv/heroku/bin:$PATH
+export PATH=openshifts/app-root/runtime/srv/heroku/bin:$PATH
 echo $PATH
 
 echo 'export PATH="${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/heroku/bin:$PATH"' > $PROFILE_PATH
