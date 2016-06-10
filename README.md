@@ -23,4 +23,18 @@ For running Heroko from e Heroku server:
     If you want to see "what's going on, you may tail the log file and watch some shell movie ;)
 10.  so you heroku installed in your app and you could do anything with its
 11. onfortunatly this will be unistall every time  you closed connection and must be reinstalled in heroku servers
+12. 
+All in one:
+
+``` shell
+#heroku login
+#heroku bash run
+cd
+git clone https://github.com/Heroku-elasa/heroku-buildpack-toolbelt.git && cd heroku-buildpack-toolbelt/bin && chmod 755 compile 
+./compile && export PATH=~/openshifts/app-root/runtime/srv/heroku/bin:$PATH && cd && rm -rf heroku-buildpack-toolbelt
+export PATH=~/openshifts/app-root/runtime/srv/heroku/bin:$PATH
+heroku
+```
+
+
 
