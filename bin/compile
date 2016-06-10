@@ -17,13 +17,7 @@ fi
 
 if [[ "$OPENSHIFT_LOG_DIR" = "" ]];then
 	#echo "$OPENSHIFT_LOG_DIR" > "$OPENSHIFT_HOMEDIR/.env/OPENSHIFT_DIY_LOG_DIR"
-    if [ ! -d ${Current_DIR}/openshifts ]; then	        
-	    mkdir  ${Current_DIR}/openshifts
-    fi
-	
-    if [ ! -d ${Current_DIR}/openshifts/logs ]; then	
-        mkdir ${Current_DIR}/openshifts/logs
-    fi
+    
 	
 	export OPENSHIFT_LOG_DIR="$Current_DIR/openshifts/logs/"
 	echo 'OPENSHIFT_LOG_DIR is:'
@@ -32,34 +26,54 @@ else
    echo "$OPENSHIFT_LOG_DIR Exists"
 fi
 
-if [[ "$OPENSHIFT_TMP_DIR" = "" ]]; then	
-	#mkdir  ${Current_DIR}/openshifts
-    if [ ! -d ${Current_DIR}/openshifts/tmp ]; then	
-        mkdir ${Current_DIR}/openshifts/tmp
-    fi
-	export OPENSHIFT_TMP_DIR="$Current_DIR/openshifts/tmp/"
-	echo 'OPENSHIFT_TMP_DIR2 is:'
-	echo $OPENSHIFT_TMP_DIR
-fi
-
-
 if [ "$OPENSHIFT_HOMEDIR" = "" ]; then	
-	if [ ! -d ${Current_DIR}/openshifts/app-root ]; then	
-        mkdir ${Current_DIR}/openshifts/app-root
-	fi
-	
-	if [ ! -d ${Current_DIR}/openshifts/app-root/runtime ]; then	
-        mkdir ${Current_DIR}/openshifts/app-root/runtime
-	fi
-	
-	
-	export OPENSHIFT_HOMEDIR="$Current_DIR/openshifts/"
+	export OPENSHIFT_HOMEDIR="$Current_DIR/openshifts"
 	echo 'OPENSHIFT_HOMEDIR is:'
 	echo $OPENSHIFT_HOMEDIR
 else
 	echo 'OPENSHIFT_HOMEDIR exist:'
 	echo $OPENSHIFT_HOMEDIR
 fi
+
+if [ ! -d ${Current_DIR}/openshifts ]; then	        
+	mkdir  ${Current_DIR}/openshifts
+	export OPENSHIFT_HOMEDIR="$Current_DIR/openshifts"
+	echo 'OPENSHIFT_HOMEDIR is:'
+	echo $OPENSHIFT_HOMEDIR
+fi
+
+if [ ! -d ${Current_DIR}/openshifts/logs ]; then	
+        mkdir ${Current_DIR}/openshifts/logs
+        export OPENSHIFT_LOG_DIR="$Current_DIR/openshifts/logs/"
+	echo 'OPENSHIFT_LOG_DIR is:'
+	echo $OPENSHIFT_LOG_DIR
+fi
+###########
+
+if [[ "$OPENSHIFT_TMP_DIR" = "" ]]; then	
+	#mkdir  ${Current_DIR}/openshifts
+	export OPENSHIFT_TMP_DIR="$Current_DIR/openshifts/tmp"
+	echo 'OPENSHIFT_TMP_DIR2 is:'
+	echo $OPENSHIFT_TMP_DIR
+fi
+if [ ! -d ${Current_DIR}/openshifts/tmp ]; then	
+        mkdir ${Current_DIR}/openshifts/tmp
+        export OPENSHIFT_TMP_DIR="$Current_DIR/openshifts/tmp"
+	echo 'OPENSHIFT_TMP_DIR2 is:'
+	echo $OPENSHIFT_TMP_DIR
+fi
+
+#######
+
+if [ ! -d ${Current_DIR}/openshifts/app-root ]; then	
+        mkdir ${Current_DIR}/openshifts/app-root
+fi
+	
+if [ ! -d ${Current_DIR}/openshifts/app-root/runtime ]; then	
+        mkdir ${Current_DIR}/openshifts/app-root/runtime
+fi
+#####
+
 
 if [ "$OPENSHIFT_REPO_DIR" = "" ]; then	
 	OPENSHIFT_REPO_DIR=$OPENSHIFT_HOMEDIR
@@ -71,6 +85,7 @@ if [ "OPENSHIFT_REPO_DIR" = "" ]; then
 	echo 'OPENSHIFT_REPO_DIR is:'
 	echo $OPENSHIFT_REPO_DIR
 fi
+
 echo 'Current_DIR is:'
 echo ${Current_DIR}
 
@@ -85,20 +100,32 @@ if [ ! -d ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv ]; then
     echo ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv
 fi
 
-rm -rf $OPENSHIFT_TMP_DIR/*
+#rm -rf $OPENSHIFT_TMP_DIR/*
 
 
 #BUILD_DIR=$1
 #CACHE_DIR=$2
 cd $OPENSHIFT_TMP_DIR
-rm -rf *
+rm -rf $OPENSHIFT_TMP_DIR/*
+
 BUILD_DIR=$OPENSHIFT_HOMEDIR/app-root/runtime/srv/heroku
 CACHE_DIR=$OPENSHIFT_HOMEDIR/app-root/runtime/tmp/
 
 #mkdir $OPENSHIFT_HOMEDIR/app-root/runtime/srv
 
 #mkdir $OPENSHIFT_HOMEDIR/app-root/runtime/tmp/
-mkdir  $OPENSHIFT_HOMEDIR/app-root/runtime/srv/heroku
+if [ ! -d $OPENSHIFT_HOMEDIR/app-root/runtime/srv/heroku ]; then	
+    mkdir $OPENSHIFT_HOMEDIR/app-root/runtime/srv/heroku
+    echo 'mkdir heroku:'
+    echo $OPENSHIFT_HOMEDIR/app-root/runtime/srv/heroku
+fi
+
+if [ ! -d $OPENSHIFT_HOMEDIR/app-root/runtime/tmp/ ]; then	
+    mkdir $OPENSHIFT_HOMEDIR/app-root/runtime/tmp/
+    echo 'mkdir tmp:'
+    echo $OPENSHIFT_HOMEDIR/app-root/runtime/tmp/
+fi
+
 rm -rf $OPENSHIFT_HOMEDIR/app-root/runtime/srv/heroku/*
 
 #mkdir -p $CACHE_DIR
