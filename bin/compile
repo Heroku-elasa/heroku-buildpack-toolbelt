@@ -107,12 +107,13 @@ cd $CACHE_DIR
 tar xf heroku-client.tgz
 
 rm -rf $BUILD_DIR/*
-mv $CACHE_DIR/heroku-client $BUILD_DIR
+mv $CACHE_DIR/heroku-client/* $BUILD_DIR
+cd $BUILD_DIR
 
-export PATH="$BUILD_DIR/heroku-client/bin":$PATH
+export PATH="$BUILD_DIR/bin":$PATH
 PROFILE_PATH="$BUILD_DIR/.profile.d/heroku-toolbelt.sh"
 mkdir -p $(dirname $PROFILE_PATH)
-echo 'export PATH="$OPENSHIFT_HOMEDIR/app-root/runtime/srv/heroku/heroku-client/bin:$PATH"' > $PROFILE_PATH
+echo 'export PATH="$OPENSHIFT_HOMEDIR/app-root/runtime/srv/heroku/bin:$PATH"' > $PROFILE_PATH
 
 heroku plugins:install heroku-redis
 heroku --version
